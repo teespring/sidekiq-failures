@@ -4,7 +4,7 @@ module Sidekiq
     class Middleware
       attr_accessor :msg
 
-      def call(worker, msg, queue)
+      def call(worker, msg, queue, redis_pool = nil)
         self.msg = msg
         yield
       rescue Sidekiq::Shutdown
